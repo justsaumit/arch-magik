@@ -82,7 +82,7 @@ pacman --noconfirm -S xorg-server xorg-xinit xorg-xkill xorg-xbacklight \
      fzf man-db xwallpaper python-pywal unclutter xclip maim \
      zip unzip unrar p7zip xdotool brightnessctl redshift \
      git sxhkd zsh pipewire pipewire-pulse rsync qutebrowser \
-     xcompmgr libnotify dunst wget jq aria2 cowsay \
+     ranger libnotify dunst wget jq aria2 cowsay \
      dhcpcd wpa_supplicant networkmanager pamixer mpd ncmpcpp \
      zsh-syntax-highlighting xdg-user-dirs libconfig \
      bluez bluez-utils && 
@@ -107,7 +107,7 @@ reboot
 
 printf '\033c'
 cd $HOME
-git clone https://github.com/justsaumit/dotfiles.git
+git clone https://github.com/justsaumit/.dotfiles.git
 # dwm: Window Manager
 git clone https://github.com/justsaumit/dwm.git ~/.local/src/dwm
 cd ~/.local/src/dwm
