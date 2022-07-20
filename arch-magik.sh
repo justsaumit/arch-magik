@@ -31,7 +31,8 @@ fi
 echo "Enter the root partition: "
 read rpartition
 mkfs.ext4 $rpartition 
-read -p "Did you also create a home partition? [y/n]" answer
+
+read -p "Did you also create a home partition? [y/n]" answerhome
 if [[ $answerhome = y ]] ; then
   echo "Enter the home partition: "
   read hpartition
