@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Prerequisites:
-# pacman -Sy git vim sed
-
+# pacman -Sy git vim
+# cd 
 #part1
 printf '\033c'
 echo "Welcome to Saumit's arch installer and ricing bootstraping script"
@@ -82,13 +82,13 @@ pacman --noconfirm -S xorg-server xorg-xinit xorg-xkill xorg-xbacklight \
      xcompmgr libnotify dunst wget jq aria2 cowsay \
      dhcpcd wpa_supplicant networkmanager pamixer mpd ncmpcpp \
      zsh-syntax-highlighting xdg-user-dirs libconfig \
-     bluez bluez-utils
+     bluez bluez-utils && 
 
 systemctl enable NetworkManager.service 
 sed -i '/%wheel ALL=(ALL) NOPASSWD: ALL/s/^#//g' /etc/sudoers
 echo "Enter Username: "
 read username
-useradd -m -G wheel -s /bin/zsh $username
+useradd -m -G wheel -s /bin/bash $username
 passwd $username
 echo "Pre-Installation Finish Reboot now"
 ai3_path=/home/$username/arch_install3.sh
