@@ -99,7 +99,8 @@ sed '1,/^#part3$/d' arch_install2.sh > $ai3_path
 chown $username:$username $ai3_path
 chmod +x $ai3_path
 sed '1,/^#ltr/d' arch_install2.sh > /home/$username/ltr.sh
-sed -i '/sudo/s/^#//g' /home/$username/ltr.sh
+sed -i '/sudo/s/^#//g' /home/$username/ltr.sh && 
+exit && 
 reboot
 
 #part3
