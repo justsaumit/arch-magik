@@ -10,7 +10,7 @@ echo "Welcome to Saumit's arch installer and ricing bootstraping script"
 # For faster overall Download of packages
 sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15/" /etc/pacman.conf
 sed -i '/Color/s/^#//g' /etc/pacman.conf
-sed '/ParallelDownloads = 15/a ILoveCandy' /etc/pacman.conf
+sed -i '/ParallelDownloads = 15/a ILoveCandy' /etc/pacman.conf
 
 pacman --noconfirm -Sy archlinux-keyring
 loadkeys us
@@ -98,40 +98,42 @@ ai3_path=/home/$username/arch_install3.sh
 sed '1,/^#part3$/d' arch_install2.sh > $ai3_path
 chown $username:$username $ai3_path
 chmod +x $ai3_path
-su -c $ai3_path -s /bin/sh $username
-exit 
+sed '1,/^#ltr/d' arch_install2.sh > /home/$username/ltr.sh
+sed -i '/sudo/s/^#//g' /home/$username/ltr.sh
+reboot
 
 #part3
+# To be run as user
 
 printf '\033c'
 cd $HOME
-git clone --separate-git-dir=$HOME/.dotfiles https://github.com/bugswriter/dotfiles.git tmpdotfiles
-rsync --recursive --verbose --exclude '.git' tmpdotfiles/ $HOME/
-rm -r tmpdotfiles
+git clone https://github.com/justsaumit/dotfiles.git
 # dwm: Window Manager
 git clone https://github.com/justsaumit/dwm.git ~/.local/src/dwm
 cd ~/.local/src/dwm
-sudo make clean install
+sudo make clean install &&
 git remote set-url origin git@github.com:justsaumit/dwm.git
 
 # st: Terminal Emulator
 git clone  https://github.com/justsaumit/st.git ~/.local/src/st
 cd ~/.local/src/st
-sudo make clean install
+sudo make clean install &&
 git remote set-url origin git@github.com:justsaumit/st.git
 
 # dmenu: Program Menu
 git clone https://github.com/justsaumit/dmenu.git ~/.local/src/dmenu
 cd ~/.local/src/dmenu
-sudo make clean install
+sudo make clean install &&
 git remote set-url origin git@github.com:justsaumit/dmenu.git
 
 # dwmblocks: Status bar for dwm
 git clone https://github.com/bugswriter/dwmblocks.git ~/.local/src/dwmblocks
-sudo make clean install
+cd ~/.local/src/dwmblocks
+sudo make clean install &&
 git remote set-url origin git@github.com:justsaumit/dwmblocks.git
 
 # yay: AUR helper
+cd $HOME
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
@@ -153,7 +155,7 @@ cd ~/.dotfiles
 \cp -rf .local/ $HOME
 \cp -rf .scripts/ $HOME
 \cp -rf .bash_logout .bash_profile .bashrc .xinitrc $HOME
-sed '1,/^#ltr$/d' $ai3_path > $HOME/ltr.sh
+sed '1,/^#ltr/d' $ai3_path > $HOME/ltr.sh
 sed -i '/sudo/s/^#//g' $HOME/ltr.sh
 
 #ltr to be run with sudo privilleges by user
