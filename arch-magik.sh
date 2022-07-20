@@ -143,7 +143,7 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 cd
-yay -S nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts libxft-bgra
+yay -S nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts libxft-bgra picom-git betterlockscreen brave-bin brillo dragon-drop fsearch gotop-bin jdownloader2 librewolf-bin
 
 wallp=~/pix/Wallpaper/w/wow
 mkdir -pv $wallp
