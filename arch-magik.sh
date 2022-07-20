@@ -57,11 +57,18 @@ exit
 printf '\033c'
 pacman -S --noconfirm sed
 sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15/" /etc/pacman.conf
+sed -i '/Color/s/^#//g' /etc/pacman.conf
+sed -i '/ParallelDownloads = 15/a ILoveCandy' /etc/pacman.conf
+
 ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 hwclock --systohc
+sed -i '13,14d' /etc/locale.gen
 sed -i '/en_US.UTF-8 UTF-8/s/^#//g' /etc/locale.gen
-sed -i '/en_US ISO-8859-1/s^#//g' /etc/locale.gen
+sed -i '/en_US ISO-8859-1/s/^#//g' /etc/locale.gen
+sed -i '13 a\#  en_US ISO-8859-1' /etc/locale.gen
+sed -i '14 a\#  en_US.UTF-8 UTF-8' /etc/locale.gen
 locale-gen
+
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "Hostname: (name of the device)"
 read hostname
@@ -88,7 +95,7 @@ pacman --noconfirm -S xorg-server xorg-xinit xorg-xkill xorg-xbacklight \
      bluez bluez-utils && 
 
 systemctl enable NetworkManager.service 
-sed -i '/%wheel ALL=(ALL) NOPASSWD: ALL/s/^#//g' /etc/sudoers
+sed -i '/ %wheel ALL=(ALL:ALL) ALL/s/^#//g' /etc/sudoers
 echo "Enter Username: "
 read username
 useradd -m -G wheel -s /bin/bash $username
@@ -99,12 +106,12 @@ sed '1,/^#part3$/d' arch_install2.sh > $ai3_path
 chown $username:$username $ai3_path
 chmod +x $ai3_path
 sed '1,/^#ltr/d' arch_install2.sh > /home/$username/ltr.sh
-sed -i '/sudo/s/^#//g' /home/$username/ltr.sh && 
-exit && 
-reboot
+sed -i '/sudo/s/^#//g' /home/$username/ltr.sh
+chmod +x /home/$username/ltr.sh
+echo "Arch Installation is complete! Reboot the system"
+exit
 
 #part3
-# To be run as user
 
 printf '\033c'
 cd $HOME
@@ -138,6 +145,7 @@ cd $HOME
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+cd
 yay -S nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts 
 
 wallp=pix/Wallpaper/w/wow
@@ -159,6 +167,7 @@ cd ~/.dotfiles
 sed '1,/^#ltr/d' $ai3_path > $HOME/ltr.sh
 sed -i '/sudo/s/^#//g' $HOME/ltr.sh
 
+echo "Installation Complete! exit and reboot your system!"
 #ltr to be run with sudo privilleges by user
 #sudo mkdir -pv /etc/X11/xorg.conf.d/ /etc/udev/rules.d/
 #sudo cp $HOME/.dotfiles/etc/X11/xorg.conf.d/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
