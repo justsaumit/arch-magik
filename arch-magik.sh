@@ -89,10 +89,10 @@ pacman --noconfirm -S xorg-server xorg-xinit xorg-xkill xorg-xbacklight \
      fzf man-db xwallpaper python-pywal unclutter xclip maim \
      zip unzip unrar p7zip xdotool brightnessctl redshift \
      git sxhkd zsh pipewire pipewire-pulse rsync qutebrowser \
-     ranger libnotify dunst wget jq aria2 cowsay \
+     ranger libnotify dunst wget jq aria2 cowsay neovim \
      dhcpcd wpa_supplicant networkmanager pamixer mpd ncmpcpp \
      zsh-syntax-highlighting xdg-user-dirs libconfig \
-     bluez bluez-utils && 
+     polkit bluez bluez-utils && 
 
 systemctl enable NetworkManager.service 
 sed -i '/ %wheel ALL=(ALL:ALL) ALL/s/^#//g' /etc/sudoers
@@ -105,14 +105,11 @@ ai3_path=/home/$username/arch_install3.sh
 sed '1,/^#part3$/d' arch_install2.sh > $ai3_path
 chown $username:$username $ai3_path
 chmod +x $ai3_path
-sed '1,/^#ltr/d' arch_install2.sh > /home/$username/ltr.sh
-sed -i '/sudo/s/^#//g' /home/$username/ltr.sh
-chmod +x /home/$username/ltr.sh
 echo "Arch Installation is complete! Reboot the system"
 exit
 
 #part3
-
+#Run as user
 printf '\033c'
 cd $HOME
 git clone https://github.com/justsaumit/.dotfiles.git
@@ -135,7 +132,7 @@ sudo make clean install &&
 git remote set-url origin git@github.com:justsaumit/dmenu.git
 
 # dwmblocks: Status bar for dwm
-git clone https://github.com/bugswriter/dwmblocks.git ~/.local/src/dwmblocks
+git clone https://github.com/justsaumit/dwmblocks.git ~/.local/src/dwmblocks
 cd ~/.local/src/dwmblocks
 sudo make clean install &&
 git remote set-url origin git@github.com:justsaumit/dwmblocks.git
@@ -146,9 +143,9 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 cd
-yay -S nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts 
+yay -S nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts libxft-bgra
 
-wallp=pix/Wallpaper/w/wow
+wallp=~/pix/Wallpaper/w/wow
 mkdir -pv $wallp
 wget -P $wallp https://images5.alphacoders.com/125/1255724.jpg & 
 wget -P $wallp https://images4.alphacoders.com/144/14.jpg &
@@ -164,11 +161,11 @@ cd ~/.dotfiles
 \cp -rf .local/ $HOME
 \cp -rf .scripts/ $HOME
 \cp -rf .bash_logout .bash_profile .bashrc .xinitrc $HOME
-sed '1,/^#ltr/d' $ai3_path > $HOME/ltr.sh
-sed -i '/sudo/s/^#//g' $HOME/ltr.sh
 
-echo "Installation Complete! exit and reboot your system!"
-#ltr to be run with sudo privilleges by user
-#sudo mkdir -pv /etc/X11/xorg.conf.d/ /etc/udev/rules.d/
-#sudo cp $HOME/.dotfiles/etc/X11/xorg.conf.d/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
-#sudo cp $HOME/.dotfiles/etc/udev/rules.d/90-backlight.rules /etc/udev/rules.d/90-backlight.rules
+cd
+sudo mkdir -pv /etc/X11/xorg.conf.d/ /etc/udev/rules.d/
+sudo cp $HOME/.dotfiles/etc/X11/xorg.conf.d/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
+sudo cp $HOME/.dotfiles/etc/udev/rules.d/90-backlight.rules /etc/udev/rules.d/90-backlight.rules
+
+echo "Post-Installation Ricing Complete! reboot your system to see the changes"
+exit
