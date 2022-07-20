@@ -2,13 +2,15 @@
 
 # Prerequisites:
 # pacman -Sy git vim
-# cd 
+# cd arch-magik
 #part1
 printf '\033c'
 echo "Welcome to Saumit's arch installer and ricing bootstraping script"
 
 # For faster overall Download of packages
 sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15/" /etc/pacman.conf
+sed -i '/Color/s/^#//g' /etc/pacman.conf
+sed '/ParallelDownloads = 15/a ILoveCandy' /etc/pacman.conf
 
 pacman --noconfirm -Sy archlinux-keyring
 loadkeys us
@@ -62,6 +64,7 @@ sed -i '/en_US ISO-8859-1/s^#//g' /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "Hostname: (name of the device)"
+read hostname
 echo $hostname > /etc/hostname
 echo "127.0.0.1       localhost" >> /etc/hosts
 echo "::1             localhost" >> /etc/hosts
@@ -74,7 +77,7 @@ sed -i 's/quiet/pci=noaer/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 pacman --noconfirm -S xorg-server xorg-xinit xorg-xkill xorg-xbacklight \
-     gnu-free-fonts nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts ttf-jetbrains-mono ttf-joypixels ttf-font-awesome \
+     gnu-free-fonts ttf-jetbrains-mono ttf-joypixels ttf-font-awesome \
      sxiv mpv zathura zathura-pdf-mupdf ffmpeg imagemagick  \
      fzf man-db xwallpaper python-pywal unclutter xclip maim \
      zip unzip unrar p7zip xdotool brightnessctl redshift \
@@ -132,6 +135,7 @@ git remote set-url origin git@github.com:justsaumit/dwmblocks.git
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+yay -S nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts 
 
 wallp=pix/Wallpaper/w/wow
 mkdir -pv $wallp
