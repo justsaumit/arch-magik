@@ -12,6 +12,11 @@ sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15/" /etc/pacman.conf
 sed -i '/Color/s/^#//g' /etc/pacman.conf
 sed -i '/ParallelDownloads = 15/a ILoveCandy' /etc/pacman.conf
 
+#Updating mirrorlist
+pacman --noconfirm -Sy reflector
+reflector -c India -c Worldwide -a 12 -p https --sort rate --save /etc/pacman.d/mirrorlist
+pacman -Syyy
+
 pacman --noconfirm -Sy archlinux-keyring
 loadkeys us
 timedatectl set-ntp true
