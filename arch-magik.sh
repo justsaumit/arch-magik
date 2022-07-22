@@ -85,17 +85,17 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 pacman --noconfirm -S xorg-server xorg-xinit xorg-xkill xorg-xbacklight \
      gnu-free-fonts ttf-jetbrains-mono ttf-joypixels ttf-font-awesome \
-     sxiv mpv zathura zathura-pdf-mupdf ffmpeg imagemagick  \
-     fzf man-db xwallpaper python-pywal unclutter xclip maim \
+     sxiv mpv zathura zathura-pdf-mupdf ffmpeg ffmpegthumbnailer imagemagick  \
+     vi vim fzf man-db xwallpaper python-pywal unclutter xclip maim \
      zip unzip unrar p7zip xdotool brightnessctl redshift \
      git sxhkd zsh pipewire pipewire-pulse rsync qutebrowser \
-     ranger libnotify dunst wget jq aria2 cowsay neovim \
+     ranger libnotify dunst wget jq aria2 cowsay neofetch neovim \
      dhcpcd wpa_supplicant networkmanager pamixer mpd ncmpcpp \
-     zsh-syntax-highlighting xdg-user-dirs libconfig \
-     polkit bluez bluez-utils && 
+     zsh-syntax-highlighting xdg-user-dirs pass pass-otp libconfig \
+     polkit polkit-gnome trash-cli geoip bluez bluez-utils yt-dlp && 
 
 systemctl enable NetworkManager.service 
-sed -i '/ %wheel ALL=(ALL:ALL) ALL/s/^#//g' /etc/sudoers
+sed -i '/ %wheel ALL=(ALL:ALL) NOPASSWD: ALL/s/^#//g' /etc/sudoers
 echo "Enter Username: "
 read username
 useradd -m -G wheel -s /bin/bash $username
@@ -105,11 +105,11 @@ ai3_path=/home/$username/arch_install3.sh
 sed '1,/^#part3$/d' arch_install2.sh > $ai3_path
 chown $username:$username $ai3_path
 chmod +x $ai3_path
-echo "Arch Installation is complete! Reboot the system"
+su -c $ai3_path -s /bin/sh $username
+echo "Arch Installation is complete! Onto Ricing"
 exit
 
 #part3
-#Run as user
 printf '\033c'
 cd $HOME
 git clone https://github.com/justsaumit/.dotfiles.git
@@ -143,8 +143,7 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 cd
-yay -S nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts libxft-bgra picom-git betterlockscreen brave-bin brillo dragon-drop fsearch gotop-bin jdownloader2 librewolf-bin
-
+yay -S nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts libxft-bgra picom-git betterlockscreen brave-bin brillo dragon-drop fsearch gotop-bin bashtop jdownloader2 librewolf-bin quich-git whatsapp-nativefier spotify ytfzf notepadqq arc-darkest-theme-git galculator gparted 
 wallp=~/pix/Wallpaper/w/wow
 mkdir -pv $wallp
 wget -P $wallp https://images5.alphacoders.com/125/1255724.jpg & 
@@ -167,5 +166,9 @@ sudo mkdir -pv /etc/X11/xorg.conf.d/ /etc/udev/rules.d/
 sudo cp $HOME/.dotfiles/etc/X11/xorg.conf.d/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
 sudo cp $HOME/.dotfiles/etc/udev/rules.d/90-backlight.rules /etc/udev/rules.d/90-backlight.rules
 
+sudo sed -i '/ %wheel ALL=(ALL:ALL) ALL/s/^#//g' /etc/sudoers
+sudo sed -i 's/^[^#]* %wheel ALL=(ALL:ALL) NOPASSWD: ALL/#&/' /etc/sudoers
+
 echo "Post-Installation Ricing Complete! reboot your system to see the changes"
 exit
+
