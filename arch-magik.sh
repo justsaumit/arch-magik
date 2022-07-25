@@ -98,11 +98,11 @@ pacman --noconfirm --needed -Sy xorg-server xorg-xinit xorg-xkill xorg-xbackligh
      sxiv mpv zathura zathura-pdf-mupdf ffmpeg ffmpegthumbnailer imagemagick  \
      vi vim fzf man-db xwallpaper python-pywal unclutter xclip maim \
      zip unzip unrar p7zip nvidia xdotool brightnessctl redshift \
-     git sxhkd zsh pipewire pipewire-pulse rsync qutebrowser \
+     git sxhkd zsh pipewire pipewire-pulse rsync qutebrowser libreoffice-fresh \
      ranger libnotify dunst wget jq aria2 cowsay neofetch neovim \
      dhcpcd wpa_supplicant networkmanager pamixer mpd ncmpcpp \
      zsh-syntax-highlighting tmux xdg-user-dirs pass pass-otp libconfig \
-     polkit polkit-gnome trash-cli geoip bluez bluez-utils yt-dlp && 
+     polkit polkit-gnome trash-cli geoip gparted bluez bluez-utils yt-dlp && 
 
 systemctl enable NetworkManager.service 
 sed -i '/ %wheel ALL=(ALL:ALL) ALL/s/^#//g' /etc/sudoers
@@ -153,13 +153,14 @@ cd yay
 makepkg -si --noconfirm
 cd
 aurprogs='nerd-fonts-fira-code nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts 
-	picom-git betterlockscreen brave-bin brillo dragon-drop fsearch 
-	gotop-bin bashtop jdownloader2 librewolf-bin quich-git whatsapp-nativefier 
-	spotify ytfzf notepadqq arc-darkest-theme-git galculator gparted'
+	picom-git betterlockscreen brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
+	lxappearance pulsemixer element-desktop telegram-desktop whatsapp-nativefier 
+	htop gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotify ytfzf 
+	notepadqq  galculator '
 
 yay --noconfirm -S $aurprogs && 
 yay -S libxft-bgra && 
-wallp='~/pix/Wallpaper/w/wow'
+wallp="$HOME/pix/Wallpaper/w/wow"
 mkdir -pv $wallp
 wget -P $wallp https://images5.alphacoders.com/125/1255724.jpg & 
 wget -P $wallp https://images4.alphacoders.com/144/14.jpg &
