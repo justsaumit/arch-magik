@@ -153,12 +153,12 @@ cd pikaur
 makepkg -fsri --noconfirm
 cd
 aurprogs='nerd-fonts-fira-code nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts 
-	libxft-bgra picom-git betterlockscreen brave-bin brillo dragon-drop fsearch 
+	picom-git betterlockscreen brave-bin brillo dragon-drop fsearch 
 	gotop-bin bashtop jdownloader2 librewolf-bin quich-git whatsapp-nativefier 
 	spotify ytfzf notepadqq arc-darkest-theme-git galculator gparted'
 
-sudo pikaur --noconfirm -S $aurprogs &&
-wallp=~/pix/Wallpaper/w/wow
+sudo pikaur --noconfirm -S $aurprogs && sudo pikaur -S libxft-bgra && 
+wallp='~/pix/Wallpaper/w/wow'
 mkdir -pv $wallp
 wget -P $wallp https://images5.alphacoders.com/125/1255724.jpg & 
 wget -P $wallp https://images4.alphacoders.com/144/14.jpg &
@@ -168,7 +168,7 @@ wget -P $wallp https://images6.alphacoders.com/101/1017426.png &
 wget -P $wallp https://images.alphacoders.com/687/687596.jpg &
 wget -P $wallp https://images6.alphacoders.com/107/1078795.jpg 
 
- dotfiles management (Use GNU stow in future or not)
+#dotfiles management (Use GNU stow in future or not)
 cd ~/.dotfiles
 \cp -rf .config/ $HOME
 \cp -rf .local/ $HOME
