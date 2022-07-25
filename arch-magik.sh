@@ -86,6 +86,7 @@ passwd
 pacman --noconfirm -S grub efibootmgr mtools dosfstools
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCH-LINUX
 sed -i 's/quiet/pci=noaer/g' /etc/default/grub
+sed -i 's/auto/1920x1080x32/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 pacman --noconfirm -S xorg-server xorg-xinit xorg-xkill xorg-xbacklight \
@@ -96,7 +97,7 @@ pacman --noconfirm -S xorg-server xorg-xinit xorg-xkill xorg-xbacklight \
      git sxhkd zsh pipewire pipewire-pulse rsync qutebrowser \
      ranger libnotify dunst wget jq aria2 cowsay neofetch neovim \
      dhcpcd wpa_supplicant networkmanager pamixer mpd ncmpcpp \
-     zsh-syntax-highlighting xdg-user-dirs pass pass-otp libconfig \
+     zsh-syntax-highlighting tmux xdg-user-dirs pass pass-otp libconfig \
      polkit polkit-gnome trash-cli geoip bluez bluez-utils yt-dlp && 
 
 systemctl enable NetworkManager.service 
@@ -148,7 +149,11 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 cd
-echo y | LANG=C yay --noprovides --answerdiff None --answerclean None --mflags "--noconfirm" nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts libxft-bgra picom-git betterlockscreen brave-bin brillo dragon-drop fsearch gotop-bin bashtop jdownloader2 librewolf-bin quich-git whatsapp-nativefier spotify ytfzf notepadqq arc-darkest-theme-git galculator gparted 
+aurprogs='nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts libxft-bgra picom-git 
+	betterlockscreen brave-bin brillo dragon-drop fsearch gotop-bin bashtop 
+	jdownloader2 librewolf-bin quich-git whatsapp-nativefier spotify 
+	ytfzf notepadqq arc-darkest-theme-git galculator gparted'
+yay --noconfirm -S $aurprogs && yay -S $aurprogs
 wallp=~/pix/Wallpaper/w/wow
 mkdir -pv $wallp
 wget -P $wallp https://images5.alphacoders.com/125/1255724.jpg & 
@@ -165,7 +170,11 @@ cd ~/.dotfiles
 \cp -rf .local/ $HOME
 \cp -rf .scripts/ $HOME
 \cp -rf .bash_logout .bash_profile .bashrc .xinitrc $HOME
-
+sudo mkdir -pv /boot/grub/themes
+sudo cp -rf boot/grub/themes/CyberRe /boot/grub/themes/
+# using asterisk as separatpr
+sudo sed -i 's*#GRUB_THEME="/path/to/gfxtheme"*GRUB_THEME=/boot/grub/themes/CyberRe/theme.txt*g' grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 cd
 sudo mkdir -pv /etc/X11/xorg.conf.d/ /etc/udev/rules.d/
 sudo cp $HOME/.dotfiles/etc/X11/xorg.conf.d/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
