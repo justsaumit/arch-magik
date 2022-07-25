@@ -146,18 +146,19 @@ cd ~/.local/src/dwmblocks
 sudo make clean install &&
 git remote set-url origin git@github.com:justsaumit/dwmblocks.git
 
-# pikaur: AUR helper
+# yay: AUR helper
 cd $HOME
-git clone https://aur.archlinux.org/pikaur.git
-cd pikaur
-makepkg -fsri --noconfirm
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si --noconfirm
 cd
 aurprogs='nerd-fonts-fira-code nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts 
 	picom-git betterlockscreen brave-bin brillo dragon-drop fsearch 
 	gotop-bin bashtop jdownloader2 librewolf-bin quich-git whatsapp-nativefier 
 	spotify ytfzf notepadqq arc-darkest-theme-git galculator gparted'
 
-sudo pikaur --noconfirm -S $aurprogs && sudo pikaur -S libxft-bgra && 
+yay --noconfirm -S $aurprogs && 
+yay -S libxft-bgra && 
 wallp='~/pix/Wallpaper/w/wow'
 mkdir -pv $wallp
 wget -P $wallp https://images5.alphacoders.com/125/1255724.jpg & 
