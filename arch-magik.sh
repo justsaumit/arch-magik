@@ -87,7 +87,7 @@ echo "::1             localhost" >> /etc/hosts
 echo "127.0.1.1       $hostname.localdomain $hostname" >> /etc/hosts
 echo "Enter root password"
 passwd
-pacman --noconfirm -S grub efibootmgr mtools dosfstools
+pacman --noconfirm -Sy grub efibootmgr mtools dosfstools
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCH-LINUX
 sed -i 's/quiet/pci=noaer/g' /etc/default/grub
 sed -i 's/auto/1920x1080x32/g' /etc/default/grub
@@ -105,9 +105,7 @@ pacman --noconfirm --needed -Sy xorg-server xorg-xinit xorg-xkill xorg-xbackligh
      polkit polkit-gnome trash-cli geoip bluez bluez-utils yt-dlp && 
 
 systemctl enable NetworkManager.service 
-sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
-sed -i 's/^# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
-#sed -i '/ %wheel ALL=(ALL:ALL) NOPASSWD: ALL/s/^#//g' /etc/sudoers
+sed -i '/ %wheel ALL=(ALL:ALL) ALL/s/^#//g' /etc/sudoers
 echo "Enter Username: "
 read username
 useradd -m -G wheel -s /bin/bash $username
@@ -117,8 +115,7 @@ ai3_path=/home/$username/arch_install3.sh
 sed '1,/^#part3$/d' arch_install2.sh > $ai3_path
 chown $username:$username $ai3_path
 chmod +x $ai3_path
-su -c $ai3_path -s /bin/sh $username
-echo "Arch Installation is complete! Onto Ricing" 
+echo "Arch Installation is complete!" 
 exit
 
 #part3
@@ -171,7 +168,7 @@ wget -P $wallp https://images6.alphacoders.com/101/1017426.png &
 wget -P $wallp https://images.alphacoders.com/687/687596.jpg &
 wget -P $wallp https://images6.alphacoders.com/107/1078795.jpg 
 
-# dotfiles management (Use GNU stow in future or not)
+ dotfiles management (Use GNU stow in future or not)
 cd ~/.dotfiles
 \cp -rf .config/ $HOME
 \cp -rf .local/ $HOME
@@ -179,7 +176,7 @@ cd ~/.dotfiles
 \cp -rf .bash_logout .bash_profile .bashrc .xinitrc $HOME
 sudo mkdir -pv /boot/grub/themes
 sudo cp -rf boot/grub/themes/CyberRe /boot/grub/themes/
-# using asterisk as separatpr
+# using asterisk as separator
 sudo sed -i 's*#GRUB_THEME="/path/to/gfxtheme"*GRUB_THEME=/boot/grub/themes/CyberRe/theme.txt*g' /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 cd
@@ -187,14 +184,5 @@ sudo mkdir -pv /etc/X11/xorg.conf.d/ /etc/udev/rules.d/
 sudo cp $HOME/.dotfiles/etc/X11/xorg.conf.d/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
 sudo cp $HOME/.dotfiles/etc/udev/rules.d/90-backlight.rules /etc/udev/rules.d/90-backlight.rules
 
-#sudo sed -i '/ %wheel ALL=(ALL:ALL) ALL/s/^#//g' /etc/sudoers
-#sudo sed -i 's/^[^#]* %wheel ALL=(ALL:ALL) NOPASSWD: ALL/#&/' /etc/sudoers
-# Remove no password sudo rights
-sudo sed -i 's/^%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
-sudo sed -i 's/^%wheel ALL=(ALL:ALL) NOPASSWD: ALL/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
-# Add sudo rights
-sudo sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
-sudo sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 echo "Post-Installation Ricing Complete! reboot your system to see the changes"
 exit
-
