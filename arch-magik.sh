@@ -153,14 +153,14 @@ git remote set-url origin git@github.com:justsaumit/dwmblocks.git
 cd $HOME
 git clone https://aur.archlinux.org/pikaur.git
 cd pikaur
-makepkg -fsri
+makepkg -fsri --noconfirm
 cd
 aurprogs='nerd-fonts-fira-code nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts 
 	libxft-bgra picom-git betterlockscreen brave-bin brillo dragon-drop fsearch 
 	gotop-bin bashtop jdownloader2 librewolf-bin quich-git whatsapp-nativefier 
 	spotify ytfzf notepadqq arc-darkest-theme-git galculator gparted'
 
-pikaur --noconfirm -S $aurprogs
+sudo pikaur --noconfirm -S $aurprogs &&
 wallp=~/pix/Wallpaper/w/wow
 mkdir -pv $wallp
 wget -P $wallp https://images5.alphacoders.com/125/1255724.jpg & 
