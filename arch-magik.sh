@@ -96,7 +96,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 pacman --noconfirm --needed -Sy xorg-server xorg-xinit xorg-xkill xorg-xbacklight \
      gnu-free-fonts ttf-jetbrains-mono ttf-joypixels ttf-font-awesome \
      sxiv mpv zathura zathura-pdf-mupdf ffmpeg ffmpegthumbnailer imagemagick  \
-     vi vim fzf man-db xwallpaper python-pywal unclutter xclip maim \
+     vi vim fzf man-db xwallpaper python-pywal ueberzug unclutter xclip maim \
      zip unzip unrar p7zip nvidia xdotool brightnessctl redshift \
      git sxhkd zsh pipewire pipewire-pulse rsync qutebrowser libreoffice-fresh \
      ranger libnotify dunst wget jq aria2 cowsay neofetch neovim \
@@ -162,13 +162,13 @@ yay --noconfirm -S $aurprogs &&
 yay -S libxft-bgra && 
 wallp="$HOME/pix/Wallpaper/w/wow"
 mkdir -pv $wallp
-wget -P $wallp https://images5.alphacoders.com/125/1255724.jpg & 
+wget -P $wallp https://images5.alphacoders.com/125/1255724.jpg &
 wget -P $wallp https://images4.alphacoders.com/144/14.jpg &
 wget -P $wallp https://images2.alphacoders.com/689/689285.jpg &
 wget -P $wallp https://images4.alphacoders.com/673/673338.jpg &
 wget -P $wallp https://images6.alphacoders.com/101/1017426.png &
 wget -P $wallp https://images.alphacoders.com/687/687596.jpg &
-wget -P $wallp https://images6.alphacoders.com/107/1078795.jpg 
+wget -P $wallp https://images6.alphacoders.com/107/1078795.jpg &&
 
 #dotfiles management (Use GNU stow in future or not)
 cd ~/.dotfiles
@@ -180,11 +180,11 @@ sudo mkdir -pv /boot/grub/themes
 sudo cp -rf boot/grub/themes/CyberRe /boot/grub/themes/
 # using asterisk as separator
 sudo sed -i 's*#GRUB_THEME="/path/to/gfxtheme"*GRUB_THEME=/boot/grub/themes/CyberRe/theme.txt*g' /etc/default/grub
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo grub-mkconfig -o /boot/grub/grub.cfg &&
 cd
 sudo mkdir -pv /etc/X11/xorg.conf.d/ /etc/udev/rules.d/
 sudo cp $HOME/.dotfiles/etc/X11/xorg.conf.d/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
-sudo cp $HOME/.dotfiles/etc/udev/rules.d/90-backlight.rules /etc/udev/rules.d/90-backlight.rules
-
+sudo cp $HOME/.dotfiles/etc/udev/rules.d/90-backlight.rules /etc/udev/rules.d/90-backlight.rules &&
 echo "Post-Installation Ricing Complete! reboot your system to see the changes"
+exit
 exit
