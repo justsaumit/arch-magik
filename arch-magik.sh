@@ -97,10 +97,10 @@ pacman --noconfirm --needed -Sy xorg-server xorg-xinit xorg-xkill xorg-xbackligh
      gnu-free-fonts ttf-jetbrains-mono ttf-joypixels ttf-font-awesome \
      sxiv mpv zathura zathura-pdf-mupdf ffmpeg ffmpegthumbnailer imagemagick  \
      vi vim fzf man-db xwallpaper python-pywal ueberzug unclutter xclip maim \
-     zip unzip unrar p7zip nvidia xdotool brightnessctl redshift \
+     zip unzip unrar p7zip nvidia xdotool brightnessctl redshift flameshot \
      git sxhkd zsh pipewire pipewire-pulse rsync qutebrowser libreoffice-fresh \
      ranger libnotify dunst wget jq aria2 cowsay neofetch neovim \
-     dhcpcd wpa_supplicant networkmanager pamixer mpd ncmpcpp \
+     dhcpcd wpa_supplicant networkmanager ncdu pamixer mpd ncmpcpp \
      zsh-syntax-highlighting tmux xdg-user-dirs pass pass-otp libconfig \
      polkit polkit-gnome trash-cli geoip gparted bluez bluez-utils yt-dlp && 
 
@@ -159,7 +159,7 @@ aurprogs='nerd-fonts-fira-code nerd-fonts-ubuntu-mono adobe-source-code-pro-font
 	notepadqq  galculator '
 
 yay --noconfirm -S $aurprogs && 
-yay -S libxft-bgra && 
+yay -S libxft-bgra simple-mtpfs
 wallp="$HOME/pix/Wallpaper/w/wow"
 mkdir -pv $wallp
 wget -P $wallp https://images5.alphacoders.com/125/1255724.jpg &
@@ -169,6 +169,9 @@ wget -P $wallp https://images4.alphacoders.com/673/673338.jpg &
 wget -P $wallp https://images6.alphacoders.com/101/1017426.png &
 wget -P $wallp https://images.alphacoders.com/687/687596.jpg &
 wget -P $wallp https://images6.alphacoders.com/107/1078795.jpg &&
+mkdir -p $HOME/pix/Wallpaper/betterlockscreen
+cp -r $wallp/* $HOME/pix/Wallpaper/betterlockscreen
+
 
 #dotfiles management (Use GNU stow in future or not)
 cd ~/.dotfiles
@@ -176,6 +179,7 @@ cd ~/.dotfiles
 \cp -rf .local/ $HOME
 \cp -rf .scripts/ $HOME
 \cp -rf .bash_logout .bash_profile .bashrc .xinitrc $HOME
+sudo rm /usr/bin/passmenu
 sudo mkdir -pv /boot/grub/themes
 sudo cp -rf boot/grub/themes/CyberRe /boot/grub/themes/
 # using asterisk as separator
