@@ -97,10 +97,10 @@ pacman --noconfirm --needed -Sy xorg-server xorg-xinit xorg-xkill xorg-xbackligh
      gnu-free-fonts ttf-jetbrains-mono ttf-joypixels ttf-font-awesome \
      sxiv mpv zathura zathura-pdf-mupdf ffmpeg ffmpegthumbnailer imagemagick  \
      vi vim fzf man-db xwallpaper python-pywal ueberzug unclutter xclip maim \
-     zip unzip unrar p7zip nvidia xdotool brightnessctl redshift flameshot \
-     git sxhkd zsh pipewire pipewire-pulse rsync qutebrowser libreoffice-fresh \
-     ranger libnotify dunst wget jq aria2 cowsay neofetch neovim \
-     dhcpcd wpa_supplicant networkmanager ncdu pamixer mpd ncmpcpp \
+     zip unzip unrar p7zip xdotool brightnessctl redshift flameshot \
+     git sxhkd zsh pipewire pipewire-pulse pulseaudio-nextsink rsync libreoffice-fresh \
+     ranger libnotify dunst wget jq aria2 cowsay neofetch neovim qutebrowser \
+     dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp \
      zsh-syntax-highlighting tmux xdg-user-dirs pass pass-otp libconfig \
      polkit polkit-gnome trash-cli geoip gparted bluez bluez-utils yt-dlp && 
 
@@ -156,10 +156,19 @@ aurprogs='nerd-fonts-fira-code nerd-fonts-ubuntu-mono adobe-source-code-pro-font
 	picom-git betterlockscreen brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
 	lxappearance pulsemixer element-desktop telegram-desktop whatsapp-nativefier 
 	htop gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotify ytfzf 
-	notepadqq  galculator '
-
+	notepadqq  galculator playerctl'
+nvidia='nvidia nvidia-prime nvidia-utils nvidia-settings'
+virt= 'libvirt qemu virt-manager ebtables libguestfs dnsmasq vde2 bridge-utils openbsd-netcat'
 yay --noconfirm -S $aurprogs && 
-yay -S libxft-bgra simple-mtpfs
+yay -S libxft-bgra simple-mtpfs &&
+read -p "Do you wish to install nvidia packages? [y/n]" answer
+if [[ $answer = y ]] ; then
+	yay -S $nvidia
+fi
+read -p "Do you wish to install virtualization packages? [y/n]" answer
+if [[ $answer = y ]] ; then
+	yay -S $virt
+fi
 wallp="$HOME/pix/Wallpaper/w/wow"
 mkdir -pv $wallp
 wget -P $wallp https://images5.alphacoders.com/125/1255724.jpg &
