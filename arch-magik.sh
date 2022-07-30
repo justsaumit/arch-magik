@@ -180,7 +180,8 @@ wget -P $wallp https://images.alphacoders.com/687/687596.jpg &
 wget -P $wallp https://images6.alphacoders.com/107/1078795.jpg &&
 mkdir -p $HOME/pix/Wallpaper/betterlockscreen
 cp -r $wallp/* $HOME/pix/Wallpaper/betterlockscreen
-
+cd $wallp
+wget https://ncloud.draconyan.xyz/s/WsXS3P5mM9wjrit/download && unzip download
 
 #dotfiles management (Use GNU stow in future or not)
 cd ~/.dotfiles
