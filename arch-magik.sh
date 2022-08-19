@@ -15,7 +15,7 @@ sed -i '/ParallelDownloads = 15/a ILoveCandy' /etc/pacman.conf
 #Updating mirrorlist for faster downloads
 country=$(curl -4 ifconfig.co/country-iso)
 pacman --noconfirm -Sy reflector
-reflector -c $country -c Worldwide -a 12 -p https --sort rate --save /etc/pacman.d/mirrorlist
+reflector --verbose --sort rate --save -l 30 --save /etc/pacman.d/mirrorlist
 pacman -Syyy
 
 pacman --noconfirm -Sy archlinux-keyring
