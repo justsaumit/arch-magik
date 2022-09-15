@@ -153,7 +153,7 @@ cd yay
 makepkg -si --noconfirm
 cd
 aurprogs='nerd-fonts-fira-code nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts 
-	picom-git betterlockscreen brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
+	picom-git python-lolcat brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
 	lxappearance pulsemixer element-desktop telegram-desktop whatsapp-nativefier 
 	htop gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotify ytfzf 
 	notepadqq  galculator playerctl pulseaudio-nextsink'
