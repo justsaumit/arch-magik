@@ -95,11 +95,11 @@ sed -i 's/auto/1920x1080x32/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 pacman --noconfirm --needed -Sy xorg-server xorg-xinit xorg-xkill xorg-xbacklight \
-     gnu-free-fonts ttf-jetbrains-mono ttf-joypixels ttf-font-awesome \
+     gnu-free-fonts ttf-ubuntumono-nerd ttf-joypixels ttf-font-awesome \
      sxiv mpv zathura zathura-pdf-mupdf ffmpeg ffmpegthumbnailer imagemagick  \
      vi vim fzf man-db xwallpaper python-pywal ueberzug unclutter xclip maim \
-     zip unzip unrar p7zip xdotool brightnessctl redshift flameshot \
-     git sxhkd zsh pipewire pipewire-pulse rsync libreoffice-fresh \
+     zip unzip unrar p7zip xdotool brightnessctl redshift flameshot picom \
+     git sxhkd zsh pipewire pipewire-pulse pulsemixer wireplumber rsync libreoffice-fresh \
      ranger libnotify dunst wget jq aria2 cowsay neofetch neovim qutebrowser \
      dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp \
      zsh-syntax-highlighting tmux xdg-user-dirs pass pass-otp libconfig \
@@ -153,11 +153,11 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 cd
-aurprogs='nerd-fonts-fira-code nerd-fonts-ubuntu-mono adobe-source-code-pro-fonts 
-	picom-git python-lolcat brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
-	lxappearance pulsemixer element-desktop telegram-desktop whatsapp-nativefier 
+aurprogs='nerd-fonts-ubuntu-mono nerd-fonts-jetbrains-mono 
+	python-lolcat brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
+	lxappearance element-desktop telegram-desktop whatsapp-nativefier 
 	htop gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotify ytfzf 
-	notepadqq  galculator playerctl pulseaudio-nextsink'
+	notepadqq  galculator pfetch'
 nvidia='nvidia nvidia-prime nvidia-utils nvidia-settings'
 virt= 'libvirt qemu virt-manager ebtables libguestfs dnsmasq vde2 bridge-utils openbsd-netcat'
 yay --noconfirm -S $aurprogs && 
