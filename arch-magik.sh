@@ -103,7 +103,7 @@ pacman --noconfirm --needed -Sy xorg-server xorg-xinit xorg-xkill xorg-xbackligh
      ranger libnotify dunst wget jq aria2 cowsay neofetch neovim qutebrowser \
      dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp \
      zsh-syntax-highlighting tmux xdg-user-dirs pass pass-otp libconfig \
-     polkit polkit-gnome trash-cli geoip gparted bluez bluez-utils yt-dlp && 
+     polkit polkit-gnome trash-cli geoip gparted bluez bluez-utils yt-dlp ytfzf  && 
 
 systemctl enable NetworkManager.service 
 sed -i '/ %wheel ALL=(ALL:ALL) ALL/s/^#//g' /etc/sudoers
@@ -156,7 +156,7 @@ cd
 aurprogs='nerd-fonts-ubuntu-mono nerd-fonts-jetbrains-mono 
 	python-lolcat brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
 	lxappearance element-desktop telegram-desktop whatsapp-nativefier 
-	htop gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotify ytfzf 
+	htop gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotify 
 	notepadqq  galculator pfetch'
 nvidia='nvidia nvidia-prime nvidia-utils nvidia-settings'
 virt= 'libvirt qemu virt-manager ebtables libguestfs dnsmasq vde2 bridge-utils openbsd-netcat'
