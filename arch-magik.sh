@@ -98,8 +98,8 @@ pacman --noconfirm --needed -Sy xorg-server xorg-xinit xorg-xkill xorg-xbackligh
      gnu-free-fonts ttf-ubuntumono-nerd ttf-joypixels ttf-font-awesome \
      sxiv mpv zathura zathura-pdf-mupdf ffmpeg ffmpegthumbnailer imagemagick  \
      vi vim fzf man-db xwallpaper python-pywal ueberzug unclutter xclip maim \
-     zip unzip unrar p7zip xdotool brightnessctl redshift flameshot picom \
-     git sxhkd zsh pipewire pipewire-pulse pulsemixer wireplumber rsync libreoffice-fresh \
+     zip unzip unrar p7zip xdotool brightnessctl redshift flameshot \
+     git sxhkd zsh bc pipewire pipewire-pulse pulsemixer wireplumber rsync libreoffice-fresh \
      ranger libnotify dunst wget jq aria2 cowsay neofetch neovim qutebrowser \
      dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp \
      zsh-syntax-highlighting tmux xdg-user-dirs pass pass-otp libconfig \
@@ -153,13 +153,13 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 cd
-aurprogs='nerd-fonts-ubuntu-mono nerd-fonts-jetbrains-mono 
+aurprogs='nerd-fonts-jetbrains-mono picom-git 
 	python-lolcat brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
 	lxappearance element-desktop telegram-desktop whatsapp-nativefier 
 	htop gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotify 
 	notepadqq  galculator pfetch'
 nvidia='nvidia nvidia-prime nvidia-utils nvidia-settings'
-virt= 'libvirt qemu virt-manager ebtables libguestfs dnsmasq vde2 bridge-utils openbsd-netcat'
+virt='libvirt qemu virt-manager ebtables libguestfs dnsmasq vde2 bridge-utils openbsd-netcat'
 yay --noconfirm -S $aurprogs && 
 yay -S libxft-bgra simple-mtpfs &&
 read -p "Do you wish to install nvidia packages? [y/n]" answer
@@ -171,18 +171,12 @@ if [[ $answer = y ]] ; then
 	yay -S $virt
 fi
 wallp="$HOME/pix/Wallpaper/w/wow"
+btrls="$HOME/pix/Wallpaper/betterlockscreen"
 mkdir -pv $wallp
-wget -P $wallp https://images5.alphacoders.com/125/1255724.jpg &
-wget -P $wallp https://images4.alphacoders.com/144/14.jpg &
-wget -P $wallp https://images2.alphacoders.com/689/689285.jpg &
-wget -P $wallp https://images4.alphacoders.com/673/673338.jpg &
-wget -P $wallp https://images6.alphacoders.com/101/1017426.png &
-wget -P $wallp https://images.alphacoders.com/687/687596.jpg &
-wget -P $wallp https://images6.alphacoders.com/107/1078795.jpg &&
-mkdir -p $HOME/pix/Wallpaper/betterlockscreen
-cp -r $wallp/* $HOME/pix/Wallpaper/betterlockscreen
+mkdir -pv $btrls
 cd $wallp
-wget https://ncloud.draconyan.xyz/s/y7aowcgtHyDxQ3J/download && unzip download
+wget https://draconyan.xyz/wallp && unzip wallp
+cp -r $wallp/* $btrls
 
 #dotfiles management (Use GNU stow in future or not)
 cd ~/.dotfiles
