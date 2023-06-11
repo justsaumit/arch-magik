@@ -94,16 +94,17 @@ sed -i 's/quiet/pci=noaer/g' /etc/default/grub
 sed -i 's/auto/1920x1080x32/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman --noconfirm --needed -Sy xorg-server xorg-xinit xorg-xkill xorg-xbacklight \
-     gnu-free-fonts ttf-ubuntumono-nerd ttf-joypixels ttf-font-awesome \
-     sxiv mpv zathura zathura-pdf-mupdf ffmpeg ffmpegthumbnailer imagemagick  \
-     vi vim fzf man-db xwallpaper python-pywal ueberzug unclutter xclip maim \
-     zip unzip unrar p7zip xdotool brightnessctl redshift flameshot \
-     git sxhkd zsh bc pipewire pipewire-pulse pulsemixer wireplumber rsync libreoffice-fresh \
-     ranger libnotify dunst wget jq aria2 cowsay neofetch neovim qutebrowser \
+pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland waybar wl-clipboard wf-recorder \
+     gnu-free-fonts ttf-ubuntu-mono-nerd ttf-jetbrains-mono-nerd ttf-joypixels ttf-font-awesome ttf-opensans \
+     mpv zathura zathura-pdf-mupdf ffmpeg ffmpegthumbnailer imagemagick  \
+     vi vim fzf man-db filezilla firefox ntfs-3g nvtop \
+     zip unzip unrar p7zip brightnessctl redshift \
+     git zsh bc pipewire pipewire-pulse pulsemixer wireplumber rsync libreoffice-fresh \
+     ranger libnotify dunst wget jq aria2 cowsay neofetch emacs neovim qutebrowser \
      dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp \
      zsh-syntax-highlighting tmux xdg-user-dirs pass pass-otp libconfig \
-     polkit polkit-gnome trash-cli geoip gparted bluez bluez-utils yt-dlp ytfzf  && 
+     polkit polkit-gnome trash-cli geoip gparted discord bluez bluez-utils yt-dlp ytfzf  && 
+#xorg-server xorg-xinit xorg-xkill xorg-xbacklight sxiv xwallpaper python-pywal ueberzug unclutter xclip maim xdotool flameshot sxhkd
 
 systemctl enable NetworkManager.service 
 sed -i '/ %wheel ALL=(ALL:ALL) ALL/s/^#//g' /etc/sudoers
@@ -123,29 +124,6 @@ exit
 printf '\033c'
 cd $HOME
 git clone https://github.com/justsaumit/.dotfiles.git
-# dwm: Window Manager
-git clone https://github.com/justsaumit/dwm.git ~/.local/src/dwm
-cd ~/.local/src/dwm
-sudo make clean install &&
-git remote set-url origin git@github.com:justsaumit/dwm.git
-
-# st: Terminal Emulator
-git clone  https://github.com/justsaumit/st.git ~/.local/src/st
-cd ~/.local/src/st
-sudo make clean install &&
-git remote set-url origin git@github.com:justsaumit/st.git
-
-# dmenu: Program Menu
-git clone https://github.com/justsaumit/dmenu.git ~/.local/src/dmenu
-cd ~/.local/src/dmenu
-sudo make clean install &&
-git remote set-url origin git@github.com:justsaumit/dmenu.git
-
-# dwmblocks: Status bar for dwm
-git clone https://github.com/justsaumit/dwmblocks.git ~/.local/src/dwmblocks
-cd ~/.local/src/dwmblocks
-sudo make clean install &&
-git remote set-url origin git@github.com:justsaumit/dwmblocks.git
 
 # yay: AUR helper
 cd $HOME
@@ -153,15 +131,15 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 cd
-aurprogs='nerd-fonts-jetbrains-mono picom-git 
-	python-lolcat brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
-	lxappearance element-desktop telegram-desktop whatsapp-nativefier 
-	htop gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotify 
-	notepadqq  galculator pfetch'
+aurprogs='waybar wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git 
+	lxappearance element-desktop telegram-desktop whatsapp-nativefier	
+        htop gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotify 
+	notepadqq galculator pfetch swaylock-effects-git tessen vscodium-bin
+        wlr-randr simple-mtpfs downgrade'
 nvidia='nvidia nvidia-prime nvidia-utils nvidia-settings'
 virt='libvirt qemu virt-manager ebtables libguestfs dnsmasq vde2 bridge-utils openbsd-netcat'
 yay --noconfirm -S $aurprogs && 
-yay -S libxft-bgra simple-mtpfs &&
+
 read -p "Do you wish to install nvidia packages? [y/n]" answer
 if [[ $answer = y ]] ; then
 	yay -S $nvidia
@@ -184,7 +162,6 @@ cd ~/.dotfiles
 \cp -rf .local/ $HOME
 \cp -rf .scripts/ $HOME
 \cp -rf .bash_logout .bash_profile .bashrc .xinitrc $HOME
-sudo rm /usr/bin/passmenu
 sudo mkdir -pv /boot/grub/themes
 sudo cp -rf boot/grub/themes/CyberRe /boot/grub/themes/
 # using asterisk as separator
