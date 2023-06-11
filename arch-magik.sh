@@ -2,6 +2,7 @@
 
 # Prerequisites:
 # pacman -Sy git vim
+# make a curl link instead!1
 # cd arch-magik
 #part1
 printf '\033c'
@@ -96,13 +97,13 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland waybar wl-clipboard wf-recorder \
      gnu-free-fonts ttf-ubuntu-mono-nerd ttf-jetbrains-mono-nerd ttf-joypixels ttf-font-awesome ttf-opensans \
-     mpv zathura zathura-pdf-mupdf ffmpeg ffmpegthumbnailer imagemagick  \
-     vi vim fzf man-db filezilla firefox ntfs-3g nvtop xorg-xhost \
-     zip unzip unrar p7zip brightnessctl redshift \
+     mpv zathura zathura-pdf-mupdf highlight ffmpeg ffmpegthumbnailer imagemagick libsixel \
+     vi vim fzf man-db filezilla firefox ntfs-3g htop nvtop xorg-xhost \
+     zip unzip unrar p7zip brightnessctl redshift thunar qt5-wayland qt6-wayland \
      git zsh bc pipewire pipewire-pulse pulsemixer wireplumber rsync libreoffice-fresh \
-     ranger libnotify dunst wget jq aria2 cowsay neofetch emacs neovim qutebrowser \
+     ranger libnotify dunst wget jq aria2 bat cowsay neofetch emacs neovim qutebrowser \
      dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp \
-     zsh-syntax-highlighting tmux xdg-user-dirs pass pass-otp libconfig \
+     zsh-syntax-highlighting tmux pass pass-otp libconfig \
      polkit polkit-gnome trash-cli geoip gparted discord bluez bluez-utils yt-dlp ytfzf  && 
 #xorg-server xorg-xinit xorg-xkill xorg-xbacklight sxiv xwallpaper python-pywal ueberzug unclutter xclip maim xdotool flameshot sxhkd
 
@@ -133,7 +134,7 @@ makepkg -si --noconfirm
 cd
 aurprogs='waybar-hyprland-git wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git 
 	lxappearance element-desktop telegram-desktop whatsapp-nativefier	
-        htop gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotify 
+        gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotifywm
 	notepadqq galculator pfetch swaylock-effects-git tessen vscodium-bin
         wlr-randr tofi simple-mtpfs downgrade'
 nvidia='nvidia nvidia-prime nvidia-utils nvidia-settings'
