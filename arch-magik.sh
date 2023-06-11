@@ -97,7 +97,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland waybar wl-clipboard wf-recorder \
      gnu-free-fonts ttf-ubuntu-mono-nerd ttf-jetbrains-mono-nerd ttf-joypixels ttf-font-awesome ttf-opensans \
      mpv zathura zathura-pdf-mupdf ffmpeg ffmpegthumbnailer imagemagick  \
-     vi vim fzf man-db filezilla firefox ntfs-3g nvtop \
+     vi vim fzf man-db filezilla firefox ntfs-3g nvtop xorg-xhost \
      zip unzip unrar p7zip brightnessctl redshift \
      git zsh bc pipewire pipewire-pulse pulsemixer wireplumber rsync libreoffice-fresh \
      ranger libnotify dunst wget jq aria2 cowsay neofetch emacs neovim qutebrowser \
@@ -131,11 +131,11 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 cd
-aurprogs='waybar wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git 
+aurprogs='waybar-hyprland-git wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git 
 	lxappearance element-desktop telegram-desktop whatsapp-nativefier	
         htop gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotify 
 	notepadqq galculator pfetch swaylock-effects-git tessen vscodium-bin
-        wlr-randr simple-mtpfs downgrade'
+        wlr-randr tofi simple-mtpfs downgrade'
 nvidia='nvidia nvidia-prime nvidia-utils nvidia-settings'
 virt='libvirt qemu virt-manager ebtables libguestfs dnsmasq vde2 bridge-utils openbsd-netcat'
 yay --noconfirm -S $aurprogs && 
