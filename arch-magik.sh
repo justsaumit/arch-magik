@@ -40,7 +40,7 @@ if [[ $answer = y ]] ; then
 fi
 echo "Enter the root partition: "
 read rpartition
-mkfs.ext4 $rpartition 
+mkfs.ext4 $rpartition
 
 read -p "Did you also create a home partition? [y/n]" answerhome
 if [[ $answerhome = y ]] ; then
@@ -60,7 +60,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 sed '1,/^#part2$/d' `basename $0` > /mnt/arch_install2.sh
 chmod +x /mnt/arch_install2.sh
 arch-chroot /mnt ./arch_install2.sh
-exit 
+exit
 
 #part2
 printf '\033c'
@@ -104,10 +104,10 @@ pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland waybar wl-c
      ranger libnotify dunst wget jq aria2 bat cowsay neofetch emacs neovim qutebrowser \
      dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp \
      zsh-syntax-highlighting tmux pass pass-otp libconfig \
-     polkit polkit-gnome trash-cli geoip gparted discord bluez bluez-utils yt-dlp ytfzf  && 
+     polkit polkit-gnome trash-cli geoip gparted discord bluez bluez-utils yt-dlp ytfzf &&
 #xorg-server xorg-xinit xorg-xkill xorg-xbacklight sxiv xwallpaper python-pywal ueberzug unclutter xclip maim xdotool flameshot sxhkd
 
-systemctl enable NetworkManager.service 
+systemctl enable NetworkManager.service
 sed -i '/ %wheel ALL=(ALL:ALL) ALL/s/^#//g' /etc/sudoers
 echo "Enter Username: "
 read username
@@ -118,7 +118,7 @@ ai3_path=/home/$username/arch_install3.sh
 sed '1,/^#part3$/d' arch_install2.sh > $ai3_path
 chown $username:$username $ai3_path
 chmod +x $ai3_path
-echo "Arch Installation is complete!" 
+echo "Arch Installation is complete!"
 exit
 
 #part3
@@ -132,14 +132,14 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 cd
-aurprogs='waybar-hyprland-git wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git 
-	lxappearance element-desktop telegram-desktop whatsapp-nativefier	
+aurprogs='waybar-hyprland-git wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
+	lxappearance element-desktop telegram-desktop whatsapp-nativefier
         gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotifywm
 	notepadqq galculator pfetch swaylock-effects-git tessen vscodium-bin
-        wlr-randr tofi simple-mtpfs downgrade'
+        wlr-randr tofi simple-mtpfs downgrade flameshot-git'
 nvidia='nvidia nvidia-prime nvidia-utils nvidia-settings'
 virt='libvirt qemu virt-manager ebtables libguestfs dnsmasq vde2 bridge-utils openbsd-netcat'
-yay --noconfirm -S $aurprogs && 
+yay --noconfirm -S $aurprogs &&
 
 read -p "Do you wish to install nvidia packages? [y/n]" answer
 if [[ $answer = y ]] ; then
