@@ -95,17 +95,17 @@ sed -i 's/quiet/pci=noaer/g' /etc/default/grub
 sed -i 's/auto/1920x1080x32/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland waybar wl-clipboard wf-recorder \
+pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty waybar wl-clipboard wf-recorder \
      gnu-free-fonts ttf-ubuntu-mono-nerd ttf-jetbrains-mono-nerd ttf-joypixels ttf-font-awesome ttf-opensans \
      mpv zathura zathura-pdf-mupdf highlight ffmpeg ffmpegthumbnailer imagemagick libsixel \
      vi vim fzf man-db filezilla firefox ntfs-3g htop nvtop xorg-xhost \
      zip unzip unrar p7zip brightnessctl redshift thunar qt5-wayland qt6-wayland \
      git zsh bc pipewire pipewire-pulse pulsemixer wireplumber rsync libreoffice-fresh \
-     ranger libnotify dunst wget jq aria2 bat cowsay neofetch emacs neovim qutebrowser \
+     libnotify dunst wget jq aria2 bat cowsay neofetch emacs neovim qutebrowser \
      dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp \
      zsh-syntax-highlighting tmux pass pass-otp libconfig \
      polkit polkit-gnome trash-cli geoip gparted discord bluez bluez-utils yt-dlp ytfzf &&
-#xorg-server xorg-xinit xorg-xkill xorg-xbacklight sxiv xwallpaper python-pywal ueberzug unclutter xclip maim xdotool flameshot sxhkd
+#ranger xorg-server xorg-xinit xorg-xkill xorg-xbacklight sxiv xwallpaper python-pywal ueberzug unclutter xclip maim xdotool flameshot sxhkd
 
 systemctl enable NetworkManager.service
 sed -i '/ %wheel ALL=(ALL:ALL) ALL/s/^#//g' /etc/sudoers
@@ -132,11 +132,12 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 cd
-aurprogs='waybar-hyprland-git wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
+aurprogs='wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
 	lxappearance element-desktop telegram-desktop whatsapp-nativefier
         gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotifywm
 	notepadqq galculator pfetch swaylock-effects-git tessen vscodium-bin
         wlr-randr tofi simple-mtpfs downgrade flameshot-git'
+# waybar-hyprland-git
 nvidia='nvidia nvidia-prime nvidia-utils nvidia-settings'
 virt='libvirt qemu virt-manager ebtables libguestfs dnsmasq vde2 bridge-utils openbsd-netcat'
 yay --noconfirm -S $aurprogs &&
