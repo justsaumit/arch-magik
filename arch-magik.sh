@@ -100,7 +100,7 @@ pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty 
      mpv zathura zathura-pdf-mupdf highlight ffmpeg ffmpegthumbnailer imagemagick libsixel \
      vi vim fzf man-db filezilla firefox ntfs-3g htop nvtop xorg-xhost \
      zip unzip unrar p7zip brightnessctl redshift thunar qt5-wayland qt6-wayland \
-     git zsh bc pipewire pipewire-pulse pulsemixer wireplumber rsync libreoffice-fresh \
+     git zsh bc pipewire pipewire-pulse pulsemixer wireplumber sof-firmware rsync libreoffice-fresh \
      libnotify dunst wget jq aria2 bat cowsay neofetch emacs neovim qutebrowser \
      dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp \
      zsh-syntax-highlighting tmux pass pass-otp libconfig \
