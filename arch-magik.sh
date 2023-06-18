@@ -133,6 +133,7 @@ cd yay
 makepkg -si --noconfirm
 cd
 aurprogs='wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
+        rofi-lbonn-wayland rofi-calc rofi-emoji cava
 	lxappearance element-desktop telegram-desktop whatsapp-nativefier
         gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotifywm
 	notepadqq galculator pfetch swaylock-effects-git tessen vscodium-bin
