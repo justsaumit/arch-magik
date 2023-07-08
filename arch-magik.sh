@@ -98,12 +98,12 @@ grub-mkconfig -o /boot/grub/grub.cfg
 pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty waybar wl-clipboard wf-recorder \
      gnu-free-fonts ttf-ubuntu-mono-nerd ttf-jetbrains-mono-nerd ttf-joypixels ttf-font-awesome ttf-opensans \
      mpv zathura zathura-pdf-mupdf highlight ffmpeg ffmpegthumbnailer imagemagick libsixel \
-     vi vim fzf man-db filezilla firefox ntfs-3g htop nvtop xorg-xhost \
+     vi vim fzf man-db filezilla firefox ntfs-3g htop nvtop xorg-xhost imv grim slurp \
      zip unzip unrar p7zip brightnessctl redshift thunar qt5-wayland qt6-wayland \
      git zsh bc pipewire pipewire-pulse pulsemixer wireplumber sof-firmware rsync libreoffice-fresh \
      libnotify dunst wget jq aria2 bat cowsay neofetch emacs neovim qutebrowser \
      dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp \
-     zsh-syntax-highlighting tmux pass pass-otp libconfig \
+     zsh-syntax-highlighting tmux pass pass-otp libconfig obs-studio v4l2loopback-dkms \
      polkit polkit-gnome trash-cli geoip gparted discord bluez bluez-utils yt-dlp ytfzf &&
 #ranger xorg-server xorg-xinit xorg-xkill xorg-xbacklight sxiv xwallpaper python-pywal ueberzug unclutter xclip maim xdotool flameshot sxhkd
 
