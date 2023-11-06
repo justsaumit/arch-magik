@@ -104,7 +104,7 @@ pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty 
      libnotify dunst wget jq aria2 bat cowsay neofetch emacs neovim qutebrowser \
      dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp \
      zsh-syntax-highlighting tmux pass pass-otp libconfig obs-studio v4l2loopback-dkms \
-     polkit polkit-gnome trash-cli geoip gparted discord bluez bluez-utils yt-dlp ytfzf &&
+     polkit polkit-gnome gnome-keyring nextcloud-client trash-cli geoip gparted discord bluez bluez-utils yt-dlp ytfzf &&
 #ranger xorg-server xorg-xinit xorg-xkill xorg-xbacklight sxiv xwallpaper python-pywal ueberzug unclutter xclip maim xdotool flameshot sxhkd
 
 systemctl enable NetworkManager.service
