@@ -95,7 +95,7 @@ sed -i 's/quiet/pci=noaer/g' /etc/default/grub
 sed -i 's/auto/1920x1080x32/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty waybar wl-clipboard wf-recorder \
+pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty wl-clipboard wf-recorder \
      gnu-free-fonts ttf-ubuntu-mono-nerd ttf-jetbrains-mono-nerd ttf-joypixels ttf-font-awesome ttf-opensans \
      mpv zathura zathura-pdf-mupdf highlight ffmpeg ffmpegthumbnailer imagemagick libsixel \
      vi vim fzf man-db filezilla firefox ntfs-3g htop nvtop xorg-xhost imv grim slurp \
@@ -106,6 +106,7 @@ pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty 
      zsh-syntax-highlighting tmux pass pass-otp libconfig obs-studio v4l2loopback-dkms \
      polkit polkit-gnome gnome-keyring nextcloud-client trash-cli geoip gparted discord bluez bluez-utils yt-dlp ytfzf &&
 #ranger xorg-server xorg-xinit xorg-xkill xorg-xbacklight sxiv xwallpaper python-pywal ueberzug unclutter xclip maim xdotool flameshot sxhkd
+#waybar
 
 systemctl enable NetworkManager.service
 sed -i '/ %wheel ALL=(ALL:ALL) ALL/s/^#//g' /etc/sudoers
@@ -132,7 +133,7 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 cd
-aurprogs='wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
+aurprogs='waybar-git wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
         rofi-lbonn-wayland rofi-calc rofi-emoji cava
 	lxappearance element-desktop telegram-desktop whatsapp-nativefier
         gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotifywm
