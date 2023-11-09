@@ -140,13 +140,17 @@ aurprogs='waybar-git wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-th
 	notepadqq galculator pfetch swaylock-effects-git tessen vscodium-bin
         wlr-randr tofi simple-mtpfs downgrade flameshot-git'
 # waybar-hyprland-git
-nvidia='nvidia nvidia-prime nvidia-utils nvidia-settings'
+nvidia='nvidia-dkms nvidia-utils nvidia-settings qt5-wayland qt5ct libva libva-nvidia-driver-git'
 virt='libvirt qemu virt-manager ebtables libguestfs dnsmasq vde2 bridge-utils openbsd-netcat'
 yay --noconfirm -S $aurprogs &&
 
 read -p "Do you wish to install nvidia packages? [y/n]" answer
 if [[ $answer = y ]] ; then
 	yay -S $nvidia
+        echo -e "Add modules to /etc/mkinitcpio.conf:\nnvidia nvidia_modeset nvidia_uvm nvidia_drm"
+        echo -e "Generate new image:\nsudo mkinitcpio --config /etc/mkinitcpio.conf --generate /boot/initramfs-custom.img"
+        echo -e  "Add/create the following in /etc/modprobe.d/nvidia.conf:\n options nvidia-drm modeset=1"
+        echo "Reboot!"
 fi
 read -p "Do you wish to install virtualization packages? [y/n]" answer
 if [[ $answer = y ]] ; then
