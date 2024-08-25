@@ -172,7 +172,10 @@ cd
 sudo mkdir -pv /etc/X11/xorg.conf.d/ /etc/udev/rules.d/
 sudo cp $HOME/.dotfiles/etc/X11/xorg.conf.d/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
 sudo cp $HOME/.dotfiles/etc/udev/rules.d/90-backlight.rules /etc/udev/rules.d/90-backlight.rules &&
-mkdir -pv $HOME/.config/wget && touch  /home/justsaumit/.config/wget/wgetrc
+
+#XDG Clean up
+mkdir -pv $HOME/.config/wget && touch  $HOME/.config/wget/wgetrc
+mkdir -pv $HOME/.config/gtk-2.0 && touch  $HOME/.config/gtk-2.0/gtkrc-2.0
 echo "Post-Installation Ricing Complete! reboot your system to see the changes"
 exit
 exit
