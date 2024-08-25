@@ -98,7 +98,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty wl-clipboard wf-recorder \
      gnu-free-fonts ttf-ubuntu-mono-nerd ttf-jetbrains-mono-nerd ttf-joypixels ttf-font-awesome ttf-opensans \
      mpv zathura zathura-pdf-mupdf highlight ffmpeg ffmpegthumbnailer imagemagick libsixel \
-     vi vim fzf man-db filezilla firefox ntfs-3g htop nvtop xorg-xhost imv grim slurp \
+     vi vim fzf man-db filezilla firefox ntfs-3g htop nvtop xorg-xhost imv grim slurp wev \
      zip unzip unrar p7zip brightnessctl redshift thunar qt5-wayland qt6-wayland \
      git zsh bc pipewire pipewire-pulse pulsemixer wireplumber sof-firmware rsync libreoffice-fresh \
      libnotify dunst wget jq aria2 bat cowsay neofetch emacs neovim qutebrowser \
@@ -125,7 +125,7 @@ exit
 #part3
 printf '\033c'
 cd $HOME
-git clone https://github.com/justsaumit/.dotfiles.git
+git clone https://github.com/justsaumit/.dotfiles-nu.git
 
 # yay: AUR helper
 cd $HOME
@@ -134,7 +134,7 @@ cd yay
 makepkg -si --noconfirm
 cd
 aurprogs='waybar-git wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
-        rofi-lbonn-wayland rofi-calc rofi-emoji cava
+        rofi-lbonn-wayland rofi-calc-git rofi-emoji-git cava
 	lxappearance element-desktop telegram-desktop whatsapp-nativefier
         gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotifywm
 	notepadqq galculator pfetch swaylock-effects-git tessen vscodium-bin
@@ -156,29 +156,23 @@ read -p "Do you wish to install virtualization packages? [y/n]" answer
 if [[ $answer = y ]] ; then
 	yay -S $virt
 fi
-wallp="$HOME/pix/Wallpaper/w/wow"
-btrls="$HOME/pix/Wallpaper/betterlockscreen"
-mkdir -pv $wallp
-mkdir -pv $btrls
-cd $wallp
-wget https://draconyan.xyz/wallp && unzip wallp
-cp -r $wallp/* $btrls
 
 #dotfiles management (Use GNU stow in future or not)
 cd ~/.dotfiles
-\cp -rf .config/ $HOME
-\cp -rf .local/ $HOME
-\cp -rf .scripts/ $HOME
-\cp -rf .bash_logout .bash_profile .bashrc .xinitrc $HOME
-sudo mkdir -pv /boot/grub/themes
-sudo cp -rf boot/grub/themes/CyberRe /boot/grub/themes/
+ \cp -rf .config/ $HOME
+ \cp -rf .local/ $HOME
+ \cp -rf .scripts/ $HOME
+# \cp -rf .bash_logout .bash_profile .bashrc .xinitrc $HOME
+# sudo mkdir -pv /boot/grub/themes
+# sudo cp -rf boot/grub/themes/CyberRe /boot/grub/themes/
 # using asterisk as separator
-sudo sed -i 's*#GRUB_THEME="/path/to/gfxtheme"*GRUB_THEME=/boot/grub/themes/CyberRe/theme.txt*g' /etc/default/grub
-sudo grub-mkconfig -o /boot/grub/grub.cfg &&
+# sudo sed -i 's*#GRUB_THEME="/path/to/gfxtheme"*GRUB_THEME=/boot/grub/themes/CyberRe/theme.txt*g' /etc/default/grub
+# sudo grub-mkconfig -o /boot/grub/grub.cfg &&
 cd
 sudo mkdir -pv /etc/X11/xorg.conf.d/ /etc/udev/rules.d/
 sudo cp $HOME/.dotfiles/etc/X11/xorg.conf.d/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
 sudo cp $HOME/.dotfiles/etc/udev/rules.d/90-backlight.rules /etc/udev/rules.d/90-backlight.rules &&
+mkdir -pv $HOME/.config/wget && touch  /home/justsaumit/.config/wget/wgetrc
 echo "Post-Installation Ricing Complete! reboot your system to see the changes"
 exit
 exit
