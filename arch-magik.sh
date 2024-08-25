@@ -173,6 +173,13 @@ sudo mkdir -pv /etc/X11/xorg.conf.d/ /etc/udev/rules.d/
 sudo cp $HOME/.dotfiles/etc/X11/xorg.conf.d/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
 sudo cp $HOME/.dotfiles/etc/udev/rules.d/90-backlight.rules /etc/udev/rules.d/90-backlight.rules &&
 
+# Add noto fonts
+read -p "Do you wish to add noto fonts? [y/n]" answer
+if [[ $answer = y ]] ; then
+	yay -S $virt
+        sudo pacman -S $(pacman -Ssq noto-fonts)
+fi
+
 #XDG Clean up
 mkdir -pv $HOME/.config/wget && touch  $HOME/.config/wget/wgetrc
 mkdir -pv $HOME/.config/gtk-2.0 && touch  $HOME/.config/gtk-2.0/gtkrc-2.0
