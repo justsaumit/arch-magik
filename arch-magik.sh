@@ -102,7 +102,7 @@ pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty 
      zip unzip unrar p7zip brightnessctl redshift thunar qt5-wayland qt6-wayland \
      git zsh bc pipewire pipewire-pulse pulsemixer wireplumber sof-firmware rsync libreoffice-fresh \
      libnotify dunst wget jq aria2 bat cowsay neofetch emacs neovim qutebrowser \
-     dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp \
+     dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp seahorse \
      zsh-syntax-highlighting tmux pass pass-otp libconfig obs-studio v4l2loopback-dkms \
      polkit polkit-gnome gnome-keyring nextcloud-client trash-cli geoip gparted discord bluez bluez-utils yt-dlp ytfzf &&
 #ranger xorg-server xorg-xinit xorg-xkill xorg-xbacklight sxiv xwallpaper python-pywal ueberzug unclutter xclip maim xdotool flameshot sxhkd
