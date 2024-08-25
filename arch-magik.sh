@@ -96,7 +96,7 @@ sed -i 's/auto/1920x1080x32/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty wl-clipboard wf-recorder \
-     gnu-free-fonts ttf-ubuntu-mono-nerd ttf-jetbrains-mono-nerd ttf-joypixels ttf-font-awesome ttf-opensans \
+     gnu-free-fonts ttf-ubuntu-mono-nerd ttf-jetbrains-mono-nerd ttf-joypixels ttf-font-awesome ttf-opensans ttf-sourcecodepro-nerd\
      mpv zathura zathura-pdf-mupdf highlight ffmpeg ffmpegthumbnailer imagemagick libsixel \
      vi vim fzf man-db filezilla firefox ntfs-3g htop nvtop xorg-xhost imv grim slurp wev \
      zip unzip unrar p7zip brightnessctl redshift thunar qt5-wayland qt6-wayland \
