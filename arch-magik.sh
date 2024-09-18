@@ -103,7 +103,7 @@ pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty 
      git zsh bc pipewire pipewire-pulse pulsemixer wireplumber sof-firmware rsync libreoffice-fresh \
      libnotify dunst wget jq aria2 bat cowsay neofetch emacs neovim qutebrowser \
      dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp seahorse \
-     zsh-syntax-highlighting tmux pass pass-otp libconfig obs-studio v4l2loopback-dkms \
+     zsh-syntax-highlighting tmux pass pass-otp libconfig obs-studio v4l2loopback-dkms usbutils dnsutils \
      polkit polkit-gnome gnome-keyring nextcloud-client trash-cli geoip gparted discord bluez bluez-utils yt-dlp ytfzf &&
 #ranger xorg-server xorg-xinit xorg-xkill xorg-xbacklight sxiv xwallpaper python-pywal ueberzug unclutter xclip maim xdotool flameshot sxhkd
 #waybar
@@ -176,7 +176,6 @@ sudo cp $HOME/.dotfiles/etc/udev/rules.d/90-backlight.rules /etc/udev/rules.d/90
 # Add noto fonts
 read -p "Do you wish to add noto fonts? [y/n]" answer
 if [[ $answer = y ]] ; then
-	yay -S $virt
         sudo pacman -S $(pacman -Ssq noto-fonts)
 fi
 
