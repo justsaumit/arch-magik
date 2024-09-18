@@ -7,6 +7,7 @@
 #part1
 printf '\033c'
 echo "Welcome to Saumit's arch installer and ricing bootstraping script"
+echo "This script is to be run in a live iso environment. \nFor Ricing/Bootstraping refer to the part2 and part3 of this script"
 
 # For faster overall Download of packages
 sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15/" /etc/pacman.conf
@@ -24,15 +25,18 @@ pacman --noconfirm -Sy archlinux-keyring
 loadkeys us
 timedatectl set-ntp true
 lsblk
-echo "Enter the drive for partitioning: (cfdisk /dev/sda or /dev/nvme0n1)"
+echo "WARNING: The following operations will FORMAT your drive. Please be very careful!"
+echo "Ensure you have backups of any important data before proceeding."
+echo "Enter the drive for partitioning: (e.g. /dev/sda or /dev/nvme0n1)"
+lsblk -d
 read drive
 cfdisk $drive
 lsblk
 echo "Enter EFI partition: "
 read efipartition
 mkfs.vfat -F 32 $efipartition
-read -p "Did you also create a swap partition? [y/n]" answer
-if [[ $answer = y ]] ; then
+read -p "Did you also create a swap partition? [y/n]" answerswap
+if [[ $answerswap = y ]] ; then
   echo "Enter the swap partition: "
   read swappartition
   mkswap $swappartition
