@@ -99,7 +99,7 @@ sed -i 's/quiet/pci=noaer/g' /etc/default/grub
 sed -i 's/auto/1920x1080x32/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty wl-clipboard wf-recorder \
+pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty wl-clipboard wf-recorder waybar \
      gnu-free-fonts ttf-ubuntu-mono-nerd ttf-jetbrains-mono-nerd ttf-joypixels ttf-font-awesome ttf-opensans ttf-sourcecodepro-nerd\
      mpv zathura zathura-pdf-mupdf highlight ffmpeg ffmpegthumbnailer imagemagick libsixel \
      vi vim fzf man-db filezilla firefox ntfs-3g htop nvtop xorg-xhost imv grim slurp wev \
@@ -137,8 +137,8 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 cd
-aurprogs='waybar-git wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
-        rofi-lbonn-wayland rofi-calc-git rofi-emoji-git cava
+aurprogs='wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
+        rofi-wayland rofi-calc-git rofi-emoji-git cava
 	lxappearance element-desktop telegram-desktop whatsapp-nativefier
         gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotifywm
 	notepadqq galculator pfetch swaylock-effects-git tessen vscodium-bin
