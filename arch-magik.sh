@@ -99,7 +99,7 @@ sed -i 's/quiet/pci=noaer/g' /etc/default/grub
 sed -i 's/auto/1920x1080x32/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty wl-clipboard wf-recorder waybar \
+pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty wl-clipboard wf-recorder waybar batsignal \
      gnu-free-fonts ttf-ubuntu-mono-nerd ttf-jetbrains-mono-nerd ttf-joypixels ttf-font-awesome ttf-opensans ttf-sourcecodepro-nerd\
      mpv zathura zathura-pdf-mupdf highlight ffmpeg ffmpegthumbnailer imagemagick libsixel \
      vi vim fzf man-db filezilla firefox ntfs-3g htop nvtop xorg-xhost imv grim slurp wev \
@@ -130,6 +130,7 @@ exit
 printf '\033c'
 cd $HOME
 git clone https://github.com/justsaumit/.dotfiles-nu.git
+systemctl --user enable batsignal.service --now
 
 # yay: AUR helper
 cd $HOME
@@ -144,6 +145,7 @@ aurprogs='wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
 	notepadqq galculator pfetch swaylock-effects-git tessen vscodium-bin
         wlr-randr tofi simple-mtpfs downgrade flameshot-git'
 # waybar-hyprland-git
+
 nvidia='nvidia-dkms nvidia-utils nvidia-settings qt5-wayland qt5ct libva libva-nvidia-driver-git'
 virt='libvirt qemu virt-manager ebtables libguestfs dnsmasq vde2 bridge-utils openbsd-netcat'
 yay --noconfirm -S $aurprogs &&
@@ -162,10 +164,13 @@ if [[ $answer = y ]] ; then
 fi
 
 #dotfiles management (Use GNU stow in future or not)
-cd ~/.dotfiles
- \cp -rf .config/ $HOME
- \cp -rf .local/ $HOME
- \cp -rf .scripts/ $HOME
+read -p "Do you wish to rewrite existing dotfiles? [y/n] " answer
+if [[ $answer == y ]]; then
+    cd ~/.dotfiles_nu || exit
+    cp -rf .config/ $HOME
+    cp -rf .local/ $HOME
+    cp -rf .scripts/ $HOME
+fi
 # \cp -rf .bash_logout .bash_profile .bashrc .xinitrc $HOME
 # sudo mkdir -pv /boot/grub/themes
 # sudo cp -rf boot/grub/themes/CyberRe /boot/grub/themes/
