@@ -104,7 +104,7 @@ pacman --noconfirm --needed -Sy hyprland xdg-desktop-portal-hyprland foot kitty 
      mpv zathura zathura-pdf-mupdf highlight ffmpeg ffmpegthumbnailer imagemagick libsixel \
      vi vim fzf man-db filezilla firefox ntfs-3g htop nvtop xorg-xhost imv grim slurp wev \
      zip unzip unrar p7zip brightnessctl redshift thunar qt5-wayland qt6-wayland \
-     git zsh bc pipewire pipewire-pulse pulsemixer wireplumber sof-firmware rsync libreoffice-fresh \
+     git zsh bc pipewire pipewire-pulse pulsemixer wireplumber sof-firmware rsync libreoffice-fresh monolith \
      libnotify dunst wget jq aria2 bat cowsay neofetch emacs neovim qutebrowser \
      dhcpcd wpa_supplicant networkmanager net-tools ncdu pamixer mpd ncmpcpp seahorse \
      zsh-syntax-highlighting tmux pass pass-otp libconfig obs-studio v4l2loopback-dkms usbutils dnsutils \
@@ -139,7 +139,7 @@ cd yay
 makepkg -si --noconfirm
 cd
 aurprogs='wpaperd brave-bin brillo dragon-drop fsearch arc-darkest-theme-git
-        rofi-wayland rofi-calc-git rofi-emoji-git cava
+        rofi-wayland rofi-calc-git rofi-emoji-git cava bt-dualboot
 	lxappearance element-desktop telegram-desktop whatsapp-nativefier
         gotop-bin btop bashtop jdownloader2 librewolf-bin quich-git spotifywm
 	notepadqq galculator pfetch swaylock-effects-git tessen vscodium-bin
