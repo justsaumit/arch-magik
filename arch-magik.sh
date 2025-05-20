@@ -188,6 +188,10 @@ if [[ $answer = y ]] ; then
         sudo pacman -S $(pacman -Ssq noto-fonts)
 fi
 
+# Set Cantarell as default font for GTK interfaces
+gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
+
+
 #XDG Clean up
 mkdir -pv $HOME/.config/wget && touch  $HOME/.config/wget/wgetrc
 mkdir -pv $HOME/.config/gtk-2.0 && touch  $HOME/.config/gtk-2.0/gtkrc-2.0
